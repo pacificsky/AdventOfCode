@@ -28,9 +28,16 @@ def main():
 
     loop_count = 0
     while len(keys) < 75:
-        h = hashlib.md5()
-        h.update(salt + str(index))
-        hashval = h.hexdigest().lower()
+        hashval = salt + str(index)
+        for x in range(2017):
+            h = hashlib.md5()
+            h.update(hashval)
+            hashval = h.hexdigest().lower()
+
+
+        # h = hashlib.md5()
+        # h.update(salt + str(index))
+        # hashval = h.hexdigest().lower()
 
         #sys.stdout.write("Loop count is {0}\r".format(loop_count))
         #loop_count += 1
@@ -84,19 +91,6 @@ def main():
     for x in range(len(sorted_keys)):
         key = sorted_keys[x]
         print "Found key {0} at index {1}: {2}".format(x+1, key.index, key.key)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
